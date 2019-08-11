@@ -1,0 +1,87 @@
+No Query 1 você digita os comandos: depois dos comandos é necessário executar no raiozinho
+
+Em banco de dados entre aspas simples significa dados '' e entre crases são campos ``
+
+O comando só termina no ponto e virgula. Posso dar quantos enters e espaços quiser.
+
+create database cadastro;   //criar o banco de dados
+
+use cadastro;               //abre o banco de dados para poder criar a tabela
+
+create table pessoas (      //criar a tabela pessoas
+    nome varchar(30),       //30 espaços
+    idade tinyint(3),       //3 espaços
+    sexo char(1),           //uma letra
+    peso float,
+    altura float,
+    nacionalidade varchar(20)
+);
+
+describe pessoas;           //mostra as informações da tabela
+show databases;             //mostra os bancos existentes
+show tables;                //mostra as tabelas do banco de dados atual
+
+drop database cadastro;     //deletando o banco de dados
+
+create database cadastro                //criar um banco de dados
+default character set utf8              //com charset utf8
+default collate utf8_general_ci;
+
+create table pessoas(
+    id int not null auto_increment,                 //id para ser a chave primária
+	nome varchar(30) not null ,
+    nascimento date,
+    sexo enum('M','F'),                             //duas opções M e F
+    peso decimal(5,2),                              //5 = total de digitos | 2 = números após d vírgula 123,45
+    altura decial(3,2),                             //3 = total de digita  | 2 = números após a vírgula 1,57
+    nacionalidade varchar(20) default 'Brasil',     //cria com um padrão Brasil
+    primary key (id)                                //cria a chave primária utilizando o campo id
+) default charset = utf8;                           //cria com o utf8
+
+insert into pessoas                                 //inserir dados NA tabela pessoas
+(nome, nascimento, sexo, peso, altura)              //esses são os campos
+values                                              //valores
+('Godofredo', '1987-01-02', 'M', '78.5', '1.83');   //esses são os dados
+
+se os dados estiverem na mesma ordem dos campos na tabela, podemos omitir os campos:
+
+insert into pessoas values
+(default, 'Creuza', '1920-12-30', 'F', '50.2', '1.65', default);
+
+podemos colocar varias pessoas ao mesmo tempo:
+
+insert into pessoas
+(nome, nascimento, sexo, peso, altura, nacionalidade)        
+values                                           
+('Ana', '1975-12-22', 'F', '52.3', '1.45', 'EUA'),
+('Pedro', '2000-07-15', 'M', '52.3', '1.70', 'Portugal');
+
+alter table pessoas                     //alterar tabela
+add column profissao varchar(10);       //adiciona coluna no final da tabela
+
+alter table pessoas
+drop column profissao;                  //remove a coluna
+
+alter table pessoas
+add column profissao varchar(10) after nome;    //ou apenas first que ele vira o primeiro
+
+alter table pessoas
+modify column profissao varchar(20);        //para alterar as constrains
+
+alter table pessoas
+change column profissao prof varchar(20);   //para mudar o nome de uma coluna
+
+alter table pessoas
+rename to gafanhotos;                       //para mudar o nome da tabela
+
+create table if not exists cursos(          //só cria se já não existir
+
+) default charset = utf8
+
+alter table cursos
+add column idcurso int first;
+
+alter table cursos
+add primary key (idcurso);
+
+drop table cursos;      //apaga a tabela

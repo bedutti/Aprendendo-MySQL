@@ -1,0 +1,98 @@
+REGISTROS = folhas
+TABELAS = pastas
+ARQUIVOS = arquivos metalicos
+
+BANCO DE DADOS:
+    BASE DE DADOS
+	SISTEMA GERENCIADOR
+	LINGUAGEM DE EXPLORAÇÃO
+	PROGRAMAS ADICIONAIS (Gerencia de usuarios e tal)
+
+Modelos de Banco de Dado (antigos: hierarquico e de redes)
+Modelo de Banco de Dado atual: Modelo Relacional
+
+Existem modelos orientados a documentos e a objetos (mas não veremos agora)
+
+Structured Query Language (SQL)
+
+Pagos:
+ORACLE
+IBM
+dBASE
+Microsoft SQL Server
+
+Gratuitos:
+MySQL
+MariaDB (MySQL sem a ORACLE)
+FireBird
+PostPSQL
+
+MySQL é grátis e livre!
+
+A Sun Microsystens comprou em 2007 o grupo MySQL mas continuou a ser gratuito
+Em 2009 a Sun foi comprada pela ORACLE
+
+Os criadores do MySQL ficaram putinho e criaram outro FORK do MySQL, o MariaDB.
+
+MySQL tem:
+    DDL =>  Definições
+    DML =>  Manipulação
+    DQL =>  Solicitações
+    DCL =>  Controle
+    DTL =>  Transações
+
+Instalações:
+https://dev.mysql.com/downloads/workbench/ (Workbench é um aplicativo para deixar os comandos SQL mais amigaveis)
+Requisitos para instalar o Workbench:
+    https://www.microsoft.com/pt-BR/download/details.aspx?id=30653      Microsoft .NET Framework 4.5
+    https://www.microsoft.com/pt-BR/download/details.aspx?id=48145      Pacotes Redistribuíveis do Visual C++ para Visual Studio 2015
+
+http://www.wampserver.com/en/       Wampserver instala o Apache e o MySQL
+Requisitos para instalar o wampserver:
+    https://www.microsoft.com/en-us/download/details.aspx?id=30679      Visual C++ Redistributable for Visual Studio 2012 Update 4
+    Tive que instalar o Redistributable 2013 também
+
+tipos primitivos:
+Numérico:
+    Inteiros
+        TinyInt
+        SmallInt
+        Int
+        MediumInt
+        BigInt
+    Reais
+        Decimal
+        Float
+        Double
+        Real
+    Logicos
+        Bit
+        Boolean
+Data e tempo:
+        Date
+        DateTime
+        TimeStamp
+        Time
+        Year
+Literais:
+    Caracteres  Pouco texto
+        Char    (Espaços fixos)
+        VarChar (Espaçoes variáveis)
+    Textos      Para muito texto
+        TinyText
+        Text
+        MediumText
+        LongText
+    Binários
+        TinyBlob
+        Blob
+        MediumBlob
+        LongBlob
+    Coleções
+        Enum
+        Set
+Espaciais:
+        Geometry
+        Point
+        Polygon
+        Multipolygon
