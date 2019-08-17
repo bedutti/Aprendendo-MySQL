@@ -85,3 +85,68 @@ alter table cursos
 add primary key (idcurso);
 
 drop table cursos;      //apaga a tabela
+
+update cursos		//atualiza um dado de um registro
+set nome = 'HTML'
+where idcursos = '1';
+
+update cursos
+set nome 'PHP', ano = '2015'
+
+update cursos
+set nome = 'JAVA', carga = '40', ano = '2015'
+where idcurso = '5'
+limit 1;					//limita a ação do update, apenas permite a alteração de 1 registro.
+
+delete from cursos
+where idcurso = '10';				//deleta da tabela curso onde o idcurso for 10
+
+truncate table cursos;				//apaga todos os registros da tabela cursos.
+
+Gerenciar cópias de segurança:
+
+Pra fazer uma cópia de segurança tem que usar o Workbench > Server > Data Export.
+Fazer um backup de um banco de daods se chama DUMP
+Include Create Schema = Permite que ao abrir o dump, ele já crie o banco de dados automaticamente.
+
+Você pode abrir o arquivo criado com um editor de texto simples e ver que ele armazena os comandos SQL para refazer completamente seu banco de dados.
+
+Para usar o backup entre no Workbench > Server > Data Import
+
+show create table amigos;	//mostra o comando usado para criar a tabela amigos.
+
+select * from tabela;	//seleciona todos os registros de todas as colunas da tabela tabela.
+
+parâmetros para o select:
+
+order by coluna;			//devolve o resultado na ordem da coluna selecionada.
+order by coluna desc;			//ordem decrescente
+order by coluna asc;			//ordem crescente, se for crescente pode colucar nada.
+
+select nome, carga, ano from cursos	//seleciona as colunas escolhidas da tabela curso, as colunas vêm na ordem que você colocá-las
+order by nome;				//ordenado pelo nome. pode colocar quantas colunas quiser para ir ordenando.
+
+select nome, carga, ano from cursos
+order by ano, nome, carga;		//ele organiza por ano, depois nome e depois carga.
+
+select * from cursos			//seleciona tudo da tabela cursos
+where ano = '2016'			//apenas os registros que possuem ano = a 2016
+order by nome;				//ordenado pelo nome.
+
+no "where" podemos usar:
+<, >, <=, >=, =, != (diferente), <> (diferente), between 2014 and 2016 (incluindo ambos), in (2014, 2016) (inclui o que você colocar), pode colocar varias espressões entre and e or.
+
+
+select nome from cursos
+where ano between 2014 and 2016;	//seleciona tudo entre os numeros incluindo eles
+
+select nome from cursos
+where ano in (2013, 2015, 2018);	//seleciona apenas o que foi colocado.
+
+select nome from cursos
+where carga > 35 and totaulas < 30;	//junta duas condições para o where.
+
+select nome from cursos
+where carga >35 or totaulas <20		//opciona as duas opções.
+
+

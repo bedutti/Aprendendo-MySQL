@@ -1,7 +1,6 @@
 REGISTROS = folhas
 TABELAS = pastas
 ARQUIVOS = arquivos metalicos
-s
 
 BANCO DE DADOS:
     BASE DE DADOS
@@ -41,6 +40,13 @@ MySQL tem:
     DQL =>  Solicitações
     DCL =>  Controle
     DTL =>  Transações
+
+Data Definition Language	|	Data Manipulation Language	|	Data Query Language
+				|					|	
+CREATE DATABASE			|	INSERT INTO			|	SELECT
+CREATE TABLE			|	UPDATE				|	
+ALTER TABLE			|	DELETE				|	
+DROP TABLE			|	TRUNCATE			|	
 
 Instalações:
 https://dev.mysql.com/downloads/workbench/ (Workbench é um aplicativo para deixar os comandos SQL mais amigaveis)
