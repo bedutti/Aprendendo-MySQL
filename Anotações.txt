@@ -1,6 +1,7 @@
 REGISTROS = folhas
 TABELAS = pastas
 ARQUIVOS = arquivos metalicos
+s
 
 BANCO DE DADOS:
     BASE DE DADOS
