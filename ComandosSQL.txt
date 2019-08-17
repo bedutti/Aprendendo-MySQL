@@ -134,7 +134,7 @@ where ano = '2016'			//apenas os registros que possuem ano = a 2016
 order by nome;				//ordenado pelo nome.
 
 no "where" podemos usar:
-<, >, <=, >=, =, != (diferente), <> (diferente), between 2014 and 2016 (incluindo ambos), in (2014, 2016) (inclui o que você colocar), pode colocar varias espressões entre and e or.
+<, >, <=, >=, =, != (diferente), <> (diferente), between 2014 and 2016 (incluindo ambos), in (2014, 2016) (inclui o que você colocar), pode colocar varias espressões entre and e or, like (parecido)
 
 
 select nome from cursos
@@ -148,5 +148,27 @@ where carga > 35 and totaulas < 30;	//junta duas condições para o where.
 
 select nome from cursos
 where carga >35 or totaulas <20		//opciona as duas opções.
+
+select nome from cursos
+where nome like 'p%';			//like busca semelhanças, nesse caso onde começa com P. Não é case sensitive
+
+select nome from cursos
+where nome like '%p%'			//qualquer nome que tenha a letra p em qualquer posição.
+
+select nome from cursos
+where nome not like '%a%';		//seleciona qualquer nome que não tenha a letra a em nenhum lugar
+
+select * from cursos
+where nome like 'ph%p%';		//seleciona tudo da tabela cursos onde o nome comece com ph, tenha algo ou nada no meio, tenha um p e termine com qualquer coisa.
+
+wildcards:
+
+% = qualquer caractere incluindo nada.
+_ = obrigatoriamente tenha UM caractere (exclui o nada) inlui espaço. (colocar um underline por caractere que você queira)
+
+select distinct carga from cursos;	//retorna apenas os registros unicos, por exemplo, existem varias ocorrencias iguais no campo cursos, ele retornará apenas os valores unicos, sem repetição (registros: 40, 30, 40, 20, 40, 10, 20) -> (resultado: 40, 30, 20, 10).
+
+
+
 
 
