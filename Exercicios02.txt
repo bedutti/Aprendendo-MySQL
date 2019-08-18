@@ -1,0 +1,19 @@
+01) "Uma lista com as profissões dos gafanhotos e seus respectivos quantitativos"
+
+R:
+select profissao, count(profissao) from gafanhotos group by profissao;
+
+02) "Quantos gafanhotos homens e quantas mulheres nasceram após 01/Jan/2005"
+
+R:
+select sexo, count(sexo) from gafanhotos where nascimento > '2005/01/01' group by sexo;
+
+03) "Uma lista com os gafanhotos que nasceram fora do Brasil, mostrando o país de origem e o total de pessoas nascidas lá. Só nos interessam os países que tiverem mais que 3 gafanhotos com essa nacionalidade"
+
+R:
+select nacionalidade, count(nacionalidade) from gafanhotos where nacionalidade != 'Brasil' group by nacionalidade having count(nacionalidade) > 3;
+
+04) "Uma lista agrupada pela altura dos gafanhotos, mostrando quantas pessoas pesam mais de 100Kg e que estão acima da média de altura de todos os cadastrados"
+
+R:
+SELECT altura, COUNT(altura) FROM gafanhotos WHERE peso > '100' GROUP BY altura HAVING altura > (SELECT AVG(altura) FROM gafanhotos);

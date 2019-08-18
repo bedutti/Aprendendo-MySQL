@@ -168,7 +168,51 @@ _ = obrigatoriamente tenha UM caractere (exclui o nada) inlui espaço. (colocar 
 
 select distinct carga from cursos;	//retorna apenas os registros unicos, por exemplo, existem varias ocorrencias iguais no campo cursos, ele retornará apenas os valores unicos, sem repetição (registros: 40, 30, 40, 20, 40, 10, 20) -> (resultado: 40, 30, 20, 10).
 
+select count(*) from cursos		//conta quantos registros da tabela cursos
+where carga > 40;			//tema carga acima de 40.
 
+select max(carga) from cursos;		//seleciona qual é o registro com maior carga entre os cursos.
 
+select min(carga) from cursos;		//seleciona o menor.
+
+select max(totaulas) from cursos
+where ano = '2016';			//qual o maximo de aulas tiveram as aulas de 2016.
+
+select nome, min(totaulas) from cursos
+where ano = '2016';			//retorna o nome e o minimo de aulas dos cursos de 2016. Apena do primeiro registro que aparecer. Se houverem mais de um registro com o minimo de aulas ele so mostrará o primeiro.
+
+select sum(totaulas) from cursos
+where ano = '2016';			//soma o campo totaulas de todos os registros no ano de 2016.
+
+select avg(totaulas) from cursos
+where ano = 2016;			//tira a media de aulas de todos os registros no ano de 2016.
+
+select carga from cursos
+group by carga;				//seleciona a carga agrupada pela carga, valores repetidos de carga não aparecerão na lista
+
+select carga, count(carga) from cursos
+group by carga;				//seleciona a coluna carga e mostra quantos elementos têm em cada agrupamento.
+
+select carga, count(carga) from cursos
+group by carga
+order by count(carga) desc;		//ordena da carga da que tem maior quantidade de repetições para a que tem menor.
+
+select carga, count(*) from cursos
+where totaulas = 30
+group by carga;				//mostra quais as cargas e quantas repetições cada tem onde o total de aulas seja igual a 30.
+
+select carga, count(nome) from cursos
+group by carga
+having count(nome) > 3;			//retorna as cargas e a quantidade de cada, mostrando apenas as que tiverem uma contagem maior que 3.
+
+select ano, count(*) from cursos	//seleciona ano e a contagem dos anos
+group by ano				//agrupados por ano
+having count(*) >= 5			//onde a contagem seja maior ou igual a 5
+order by count(*);			//ordenado pela contagem
+
+select carga, count(*) from cursos			//seleciona a carga e a contagem
+where ano > 2015					//onde o ano for maior que 2015
+group by carga						//agrupado pela carga
+having carga > (select avg(carga) from cursos);		//onde a carga for maior que a media de carga de todos os cursos.
 
 
