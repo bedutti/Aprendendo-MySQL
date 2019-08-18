@@ -87,6 +87,7 @@ Literais:
         VarChar (Espaçoes variáveis)
     Textos      Para muito texto
         TinyText
+
         Text
         MediumText
         LongText
@@ -99,7 +100,68 @@ Literais:
         Enum
         Set
 Espaciais:
+
         Geometry
         Point
         Polygon
         Multipolygon
+
+Relacionamento entre tabelas:
+
+muitos para muitos
+
+1 gafanhoto	assiste		n cursos
+1 curso		assitido por	n gafanhotos
+
+um para um
+
+1 marido	casa com	1 esposa
+1 esposa	casa com	1 marido
+
+um para muitos
+
+1 funcionario	tem		n dependentes
+1 dependente	tem		1 funcionário
+
+Chave Primária e Chave Estrangeira - A chave estrangeira é a cópia da chave de outra tabela que cria a relação entre as tabelas
+
+Fazendo relacionamentos, Chave Primária (cp) e Chave Estrangeira (ce) devem ser do mesmo tipo, não necerssáriamente com o mesmo nome
+
+1 pra 1
+  É melhor juntar as tabelas, mas se não tiver jeito faça o relacionamento
+  Pego a chave primária da tabela secundária e envio para a tabela dominante
+
+  tabela_marido		|	tabela_esposa
+  cpf-marido (cp)	|
+  cpf-esposa (ce)      ---	cpf-esposa(cp)
+  nome			|	nome
+  nascimento		|	nascimento
+  nacionalidade		|	nacionalidade
+
+1 pra muitos
+  A regra é pegar a chave primária do lado 1 e joga para o lado do muitos como chave estrangeira
+  
+  tb_funcionarios	|	tb_dependentes
+			|	id (cp)
+  cpf (cp)	       -->	cpf-func (ce)
+  nome			|	nome
+  cargo			|	nascimento
+  especialidade		|	nacionalidade
+
+muitos pra muitos
+  você deve criar uma tabela nova, no caso tb_compra, entre cliente e produtos era muitos para muitos, porém agora as duas tem um relacionamento 1 para muitos entre a tabela compra.
+
+  (tabela original)	|	(tabela criada)		|	(tabela original)
+
+		1 	pra 	muitos	muitos		para	1
+
+  tb_cliente		|	id-compra (cp)		|	tb_produtos
+  cpf (cp)             -->	cpf-cliente (ce)	|
+			|	cod-prod (ce)	       <--	cod-prod (cp)
+  nome			|	data			|	nome
+  endereco		|	forma-pagto		|	fabricante
+  telefone		|				|	preco
+
+
+
+	
