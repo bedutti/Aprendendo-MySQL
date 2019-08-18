@@ -215,4 +215,39 @@ where ano > 2015					//onde o ano for maior que 2015
 group by carga						//agrupado pela carga
 having carga > (select avg(carga) from cursos);		//onde a carga for maior que a media de carga de todos os cursos.
 
+Criando relacionamentos: (Usar a enfine InnoDB)
+
+No exercício o Guanabara fez o relacionamento PREFERE, um gafanhoto prefere UM curso, Um curso pode ser preferido por MUITOS gafanhotos
+A regra é levar o id primário do um para o lado do muitos
+
+alter table gafanhotos
+add column cursopreferido int;		//adicionando um campo "cursopreferido" na tabela gafanhotos (lado muitos) tem que ser o mesmo tipo da chave primária da tabela cursos
+
+alter table gafanhotos
+add foreign key(cursopreferido)
+references cursos(idcurso);		//cria a chave estrangeira ligada a chave primária idcurso da tabela cursos
+
+se houver relação entre tabelas, é impossível apagar cursos que estejam em outras tabelas, pois as tabelas precisam ter consistência
+eu também não posso adicionar cursos que não existem como preferencias ao gafanhotos
+
+Fica claro que na tabela gafanhotos apenas a id do curso é guardada na tabela, então tempos que usar junções.
+
+select gafanhotos.nome, cursos.nome, cursos.ano 	//seleciono campos de duas tabelas diferentes
+from gafanhotos join cursos				//juntos as tabelas que eu quero
+on gafanhotos.cursopreferido = cursos.idcurso;		//indico qual a relação entre as tabelas, o join mostra apenas os resultados que possuem relações
+
+join ou inner join mostrará apenas registros que possuem relação.
+"left ou right" outer join mostrará todos os registros, dando prioridade a tabela da esquerda ou da direita do join
+
+select gafanhotos.nome, cursos.nome, cursos.ano 
+from gafanhotos left outer join cursos
+on gafanhotos.cursopreferido = cursos.idcurso;		//assim ele retorna todos os gafanhotos e mostra as relações existentes e as não existentes
+
+
+
+
+
+
+
+
 

@@ -162,6 +162,24 @@ muitos pra muitos
   endereco		|	forma-pagto		|	fabricante
   telefone		|				|	preco
 
+Para criar um relacionamento, é necessário que sua engine seja compatível com chaves estrageiras
+
+MyISAM	Padrão antigo que não atende ao ACID mas atende chaves estrangeiras
+InnoDB	Padrão atual, atende ao ACID e a chaves estrangeiras
+XtraDB	Padrão mais atual, atende ao ACID e a chaves estrangeiras
+
+ACID são as boa práticas de uma transação:
+
+Atomicidade - A transação tem que ser atômica, toda tarefa é feita de uma vez, não há sub tarefas (ou tudo acontece ou nada é alterado)
+Consistência - O banco de dados que estava consistente, após a transação ele deve estar consistente (se der erro volta ao estado anterior)
+Isolamento - Quando duas transações acontecem em paralelo, ela devem acontecer isoladamente, sem uma afetar a outra
+Durabilidade - Uma transação deve durar o tempo necessário
+
+
+
+
+
+
 
 
 	
