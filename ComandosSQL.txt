@@ -237,7 +237,7 @@ from gafanhotos join cursos				//juntos as tabelas que eu quero
 on gafanhotos.cursopreferido = cursos.idcurso;		//indico qual a relação entre as tabelas, o join mostra apenas os resultados que possuem relações
 
 join ou inner join mostrará apenas registros que possuem relação.
-"left ou right" outer join mostrará todos os registros, dando prioridade a tabela da esquerda ou da direita do join
+"left ou right" outer join ou "left ou right" join mostrará todos os registros, dando prioridade a tabela da esquerda ou da direita do join
 
 select gafanhotos.nome, cursos.nome, cursos.ano 
 from gafanhotos left outer join cursos
