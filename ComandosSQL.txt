@@ -243,9 +243,22 @@ select gafanhotos.nome, cursos.nome, cursos.ano
 from gafanhotos left outer join cursos
 on gafanhotos.cursopreferido = cursos.idcurso;		//assim ele retorna todos os gafanhotos e mostra as relações existentes e as não existentes
 
+create table gafanhoto_assiste_curso(			//Cria a tabela adicional para relacionar os cursos que os gafanhotos assitem
+	id int not null auto_increment,
+	data date,
+	idgafanhoto int,
+	idcurso int,
+	primary key (id),
+	foreign key(idgafanhoto) references gafanhotos(id),
+	foreign key(idcurso) references cursos(idcurso)
+) default charset = utf8;
 
-
-
+select g.nome, c.nome from gafanhotos g			//seleciona nome do gafanhoto e o nome do curso que ele assite
+join gafanhoto_assiste_curso a				//une a tabela dos cursos assistidos
+on g.id = a.idgafanhoto					//onde g.od é igual a.idgafanhoto
+join cursos c						//une a tabela cursos
+on c.idcurso = a.idcurso				//onde c.idcurso é igual a a.idcurso
+order by g.nome;					//ordenado por nome do gafanhoto
 
 
 
